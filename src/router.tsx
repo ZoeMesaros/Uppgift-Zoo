@@ -1,6 +1,8 @@
 import { createBrowserRouter } from "react-router-dom";
+import Animals from "./components/Animals";
 import App from "./App";
-import { AnimalList } from "./components/Home";
+import AnimalDetails from "./components/AnimalDetails";
+import { Home } from "./components/Home";
 
 export const router = createBrowserRouter([
   {
@@ -9,13 +11,13 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <AnimalList />,
+        element: <Home />,
         index: true,
       },
-      /*       {
-        path: "/animals/:id",
-        element: <Details />,
-      }, */
+      {
+        path: "/details",
+        element: <AnimalDetails />,
+      },
     ],
   },
 ]);

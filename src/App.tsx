@@ -1,17 +1,17 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 import "./App.scss";
-import Animals from "./components/FetchData";
+import Animals from "./components/Animals";
+import AnimalDetails from "./components/AnimalDetails";
 import { Nav } from "./components/Nav";
 
 function App() {
   return (
     <>
       <header>
-        <Nav></Nav>
+        <Nav />
       </header>
       <main className="App">
-        <Animals />
         <Outlet></Outlet>
       </main>
       <footer></footer>

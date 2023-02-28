@@ -12,7 +12,7 @@ export const Nav = () => {
             <Link to="/">Hem</Link>
           </li>
           <li>
-            <Link to="/animals/2">Detaljer</Link>
+            <Link to="/details/:id">Detaljer</Link>
           </li>
         </ul>
       </nav>

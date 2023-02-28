@@ -1,3 +1,11 @@
-export const AnimalList = () => {
-  return <h3>Home works</h3>;
+import Animals from "./Animals";
+
+export const Home = () => {
+  return (
+    <>
+      <Animals />
+    </>
+  );
 };
+
+export default Home;
