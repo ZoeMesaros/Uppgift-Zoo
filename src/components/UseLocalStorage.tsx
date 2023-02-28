@@ -1,4 +1,4 @@
-export const useLocalStorage = () => {
+const useLocalStorage = () => {
   const get = (url: any) =>
     JSON.parse(localStorage.getItem(url) as any) || null;
   const set = (url: any, data: any) =>
@@ -8,3 +8,5 @@ export const useLocalStorage = () => {
     set,
   };
 };
+
+export default useLocalStorage;

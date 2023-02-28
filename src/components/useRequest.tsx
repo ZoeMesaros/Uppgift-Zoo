@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { useLocalStorage } from "./UseLocalStorage";
+import useLocalStorage from "./UseLocalStorage";
 
 const useRequest = (url: any) => {
   const [data, setData] = useState();
@@ -17,9 +17,10 @@ const useRequest = (url: any) => {
 
   useEffect(() => {
     getData();
-  });
+  }, []);
 
   const loading = !data;
+
   return {
     data,
     loading,

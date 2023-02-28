@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
 import "./styles/AnimalCard.scss";
 import useRequest from "./useRequest";
 
@@ -14,8 +13,8 @@ const RenderAnimal = (animal: any, id: number) => (
     <p>
       <i>{animal.shortDescription}</i>
     </p>
-    <button>
-      <Link to="/animals/:id">Detaljer</Link>
+    <button className="animaButton">
+      <Link to={`/details/${animal.id}`}>Visa</Link>
     </button>
   </section>
 );

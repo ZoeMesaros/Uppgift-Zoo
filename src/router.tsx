@@ -1,5 +1,4 @@
 import { createBrowserRouter } from "react-router-dom";
-import Animals from "./components/Animals";
 import App from "./App";
 import AnimalDetails from "./components/AnimalDetails";
 import { Home } from "./components/Home";
@@ -15,7 +14,7 @@ export const router = createBrowserRouter([
         index: true,
       },
       {
-        path: "/details",
+        path: "/details/:id",
         element: <AnimalDetails />,
       },
     ],
