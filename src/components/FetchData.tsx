@@ -1,9 +1,32 @@
-import React, { useState } from "react";
-import { useQuery } from "react-query";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./styles/AnimalCard.scss";
 
-function FetchAPI() {
+const GetAnimals = async (setAnimals: any) => {
+  const url = "https://animals.azurewebsites.net/api/animals";
+  const { data } = await axios.get(url);
+  setAnimals(data);
+};
+
+const RenderAnimal = (animal: any) => (
+  <>
+    <p>{animal.name}</p>
+  </>
+);
+
+const Animals = () => {
+  const [animals, setAnimals] = useState([]);
+
+  useEffect(() => {
+    GetAnimals(setAnimals);
+  }, []);
+
+  return <>{animals.map(RenderAnimal)}</>;
+};
+
+export default Animals;
+
+/* function FetchAPI() {
   async function fetchAnimal() {
     const { data } = await axios.get(
       "https://animals.azurewebsites.net/api/animals"
@@ -42,3 +65,4 @@ function FetchAPI() {
 }
 
 export default FetchAPI;
+ */

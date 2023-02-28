@@ -1,7 +1,7 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 import "./App.scss";
-import FetchAPI from "./components/FetchData";
+import Animals from "./components/FetchData";
 import { Nav } from "./components/Nav";
 
 function App() {
@@ -11,7 +11,7 @@ function App() {
         <Nav></Nav>
       </header>
       <main className="App">
-        <FetchAPI />
+        <Animals />
         <Outlet></Outlet>
       </main>
       <footer></footer>
