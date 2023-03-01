@@ -1,14 +1,12 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 import "./App.scss";
-import { Animals } from "./components/FetchData";
-import { Nav } from "./components/Nav";
 
 function App() {
   return (
     <>
-      <header>
-        <Nav></Nav>
+      <header className="home">
+        <h1>Zoo</h1>
       </header>
       <main className="App">
         <Outlet></Outlet>

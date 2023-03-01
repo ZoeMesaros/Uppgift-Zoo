@@ -43,7 +43,7 @@ export const AnimalDetails = () => {
     GetAnimals(setDetails);
   }, []);
 
-  return <div className="wrapper">{details.map(RenderDetails)}</div>;
+  return <div>{details.map(RenderDetails)}</div>;
 };
 
 const RenderDetails = (details: any, id: number) => (
