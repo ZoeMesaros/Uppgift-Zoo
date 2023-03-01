@@ -1,6 +1,7 @@
-import { useParams } from "react-router-dom";
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
+import "./styles/AnimalCard.scss";
 
 const GetAnimals = async (setAnimals: any) => {
   const url = "https://animals.azurewebsites.net/api/animals";
@@ -19,10 +20,13 @@ const RenderAnimal = (animal: any, id: number) => (
     <p>
       <i>{animal.shortDescription}</i>
     </p>
+    <button className="animaButton">
+      <Link to={`/details/${animal.id}`}>Visa</Link>
+    </button>
   </section>
 );
 
-const AnimalDetails = () => {
+const Animals = () => {
   const [animals, setAnimals] = useState([]);
 
   useEffect(() => {
@@ -32,4 +36,4 @@ const AnimalDetails = () => {
   return <div className="wrapper">{animals.map(RenderAnimal)}</div>;
 };
 
-export default AnimalDetails;
+export default Animals;

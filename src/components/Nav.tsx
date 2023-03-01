@@ -11,6 +11,9 @@ export const Nav = () => {
           <li>
             <Link to="/">Hem</Link>
           </li>
+          <li>
+            <Link to="/animals/2">Detaljer</Link>
+          </li>
         </ul>
       </nav>
     </section>
