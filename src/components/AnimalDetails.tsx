@@ -1,35 +1,8 @@
-import { useParams } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { AnimalDetails } from "./FetchData";
 
-const GetAnimals = async (setAnimals: any) => {
-  const url = "https://animals.azurewebsites.net/api/animals";
-  const { data } = await axios.get(url);
-  localStorage.setItem(url, JSON.stringify(data));
-  setAnimals(data);
+const Product = () => {
+  return <AnimalDetails />;
 };
-
-const RenderAnimal = (animal: any, id: number) => (
-  <section className="animalCard" key={animal.id}>
-    <img className="profileImg" src={animal.imageUrl} alt={animal.name} />
-    <p>{animal.name}</p>
-    <p>
-      Senast matad <span>{animal.lastFed}</span>
-    </p>
-    <p>
-      <i>{animal.shortDescription}</i>
-    </p>
-  </section>
-);
-
-const AnimalDetails = () => {
-  const [animals, setAnimals] = useState([]);
-
-  useEffect(() => {
-    GetAnimals(setAnimals);
-  }, []);
-
-  return <div className="wrapper">{animals.map(RenderAnimal)}</div>;
-};
-
-export default AnimalDetails;
+export default Product;

@@ -1,4 +1,4 @@
-import Animals from "./FetchData";
+import { Animals } from "./FetchData";
 import "./styles/Home.scss";
 
 export const Home = () => {

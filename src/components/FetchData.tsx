@@ -4,10 +4,20 @@ import axios from "axios";
 import "./styles/AnimalCard.scss";
 
 const GetAnimals = async (setAnimals: any) => {
-  const url = "https://animals.azurewebsites.net/api/animals";
+  const url = "https://animals.azurewebsites.net/api/animals/";
   const { data } = await axios.get(url);
   localStorage.setItem(url, JSON.stringify(data));
   setAnimals(data);
+};
+
+export const Animals = () => {
+  const [animals, setAnimals] = useState([]);
+
+  useEffect(() => {
+    GetAnimals(setAnimals);
+  }, []);
+
+  return <div className="wrapper">{animals.map(RenderAnimal)}</div>;
 };
 
 const RenderAnimal = (animal: any, id: number) => (
@@ -26,14 +36,18 @@ const RenderAnimal = (animal: any, id: number) => (
   </section>
 );
 
-const Animals = () => {
-  const [animals, setAnimals] = useState([]);
+export const AnimalDetails = () => {
+  const [details, setDetails] = useState([]);
 
   useEffect(() => {
-    GetAnimals(setAnimals);
+    GetAnimals(setDetails);
   }, []);
 
-  return <div className="wrapper">{animals.map(RenderAnimal)}</div>;
+  return <div className="wrapper">{details.map(RenderDetails)}</div>;
 };
 
-export default Animals;
+const RenderDetails = (details: any, id: number) => (
+  <section className="animalCard" key={details.id}>
+    <img className="profileImg" src={details.imageUrl} alt={details.name} />
+  </section>
+);
