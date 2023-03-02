@@ -21,14 +21,14 @@ export const Animal = (props: IAnimalProps) => {
           src={props.animal.imageUrl}
           alt={props.animal.name}
         />
-        <p>{props.animal.name}</p>
-        <p>
+        <h3>{props.animal.name}</h3>
+        <p className="fed">
           Senast matad <span>{props.animal.lastFed}</span>
         </p>
-        <p>
+        <p className="desc">
           <i>{props.animal.shortDescription}</i>
         </p>
-        <button onClick={showMoreClick}>Visa</button>
+        <button className="showButton" onClick={showMoreClick}>Visa</button>
       </div>
     </>
   );

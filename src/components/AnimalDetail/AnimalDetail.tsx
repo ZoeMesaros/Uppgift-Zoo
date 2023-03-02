@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useOutletContext, useParams } from "react-router-dom";
+import { Link, useOutletContext, useParams } from "react-router-dom";
 import { IAnimal } from "../../models/IAnimal";
 import { IAnimalSmall } from "../../models/IAnimalSmall";
 import { getAnimalById } from "../../services/animalService";
@@ -18,7 +18,6 @@ export const AnimalDetails = () => {
 
         if (response.animal) {
           setAnimal(response.animal);
-        } else {
           setError(response.error);
         }
       }
@@ -30,9 +29,9 @@ export const AnimalDetails = () => {
   });
 
   const [disabled, setDisabled] = useState(false);
-
+ 
   const onClick = () => {
-    setDisabled(true);
+    setDisabled(true)
   }
 
   return (
@@ -44,16 +43,18 @@ export const AnimalDetails = () => {
       ) : (
         <>
         <section className="animalDetail">
+        <p className="goBack"><Link to={`/`}>&#10229; Gå tillbaka</Link></p>
         <div className="wrapper">
           <img src={animal?.imageUrl} alt={animal?.name} />{" "}
           <section className="animalInfo">
+            <h4>Matadstatus</h4>
           <h1 className="name">{animal?.name}</h1>
           <i>{animal?.latinName}</i>
            <h3 className="desc">{animal?.longDescription}</h3>
            <br />
            <h3>{animal?.name} blev senast matad</h3>
            <h4>{animal?.lastFed}</h4>
-           <button disabled={disabled} onClick={onClick}>Mata</button>
+           <button className="feedBtn" disabled={disabled} onClick={onClick}>Mata</button>
            </section>
           </div>
           </section>
