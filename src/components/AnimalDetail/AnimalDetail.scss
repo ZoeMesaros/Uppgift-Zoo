@@ -1,0 +1,28 @@
+.animalDetail {
+    padding-top: 2%;
+    position: relative;
+    width:70%;
+    height: 180%;
+    margin: 0 auto;
+    .wrapper {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        grid-column-gap: 6px;
+        grid-row-gap: 6px;
+      }
+
+    img {
+        position: absolute;
+        width: 62%;
+    }
+    .animalInfo {
+        position: absolute;
+        padding-left: 65%;
+        width: 30%;
+        height: 70%;
+        .name {
+            font-size: larger;
+        }
+    }
+}
+

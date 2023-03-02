@@ -15,11 +15,11 @@ export const router = createBrowserRouter([
         index: true,
       },
       {
-        path: "/animals",
+        path: "/animal",
         element: <Animals />,
       },
       {
-        path: "/animals/:id",
+        path: "/animal/:id",
         element: <AnimalDetails />,
       },
     ],
