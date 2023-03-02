@@ -1,44 +1,44 @@
 .animalDetail {
-    padding-top: 2%;
-    position: relative;
-    width:70%;
-    height: 180%;
-    margin: 0 auto;
-    .goBack {
-        padding-left: 75%;
-        font-size: 1.5em;
-    }
-    .wrapper {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-        grid-column-gap: 6px;
-        grid-row-gap: 6px;
-      
+  padding-top: 2%;
+  position: relative;
+  width: 70%;
+  height: 180%;
+  margin: 0 auto;
+  .goBack {
+    padding-left: 75%;
+    font-size: 1.5em;
+  }
+  .wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-column-gap: 6px;
+    grid-row-gap: 6px;
 
     img {
-        position: absolute;
-        width: 63%;
+      position: absolute;
+      width: 63%;
     }
     .animalInfo {
-        position: absolute;
-        padding-left: 65%;
-        width: 30%;
-        height: 70%;
-        .name {
-            font-size: 1.5rem;
-        }
+      position: absolute;
+      padding-left: 65%;
+      width: 30%;
+      height: 70%;
+      .name {
+        font-size: 1.5rem;
+      }
+      .sSymbol {
+        font-size: 1rem;
+      }
     }
     i {
-        font-size: 1.2em;
+      font-size: 1.2em;
     }
     .feedBtn {
-        width: 8em;
-        height: 3em;
+      width: 8em;
+      height: 3em;
     }
     h4 {
-        font-size: 1.5em;
+      font-size: 1.5em;
     }
-
+  }
 }
-}
-
