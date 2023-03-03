@@ -33,6 +33,10 @@ export const AnimalDetails = () => {
   const handleClick = () => {
     setDisabled(true);
     setFeedingTime();
+    feedAnimal();
+  };
+
+  const handleChange = () => {
     ToggleText();
   };
 
@@ -49,10 +53,38 @@ export const AnimalDetails = () => {
   };
 
   const [isFed, setIsFed] = useState(false);
+  const [fedTime, setFedTime] = useState<Date | null>(null);
+
+  useEffect(() => {
+    // Check on load of component, if animal is fed
+    const storedTime = localStorage.getItem(`animal-${id}-feed-time`);
+    if (storedTime === null) {
+      if (animal) {
+        setFeedStamp(animal.lastFed);
+      }
+    } else {
+      setFeedStamp(storedTime);
+      checkIfNeedsFood(storedTime);
+    }
+  }, []);
+
+  function checkIfNeedsFood(lastFed: string) {
+    const lastFedDate = new Date(lastFed);
+    const rightNow = new Date();
+
+    // TODO - Handle if day has changed too
+    // tip: https://bfy.tw/TsVk
+    if (lastFedDate.getHours() + 3 < rightNow.getHours()) {
+      // Time to feed again
+      setIsFed(false);
+    } else {
+      setIsFed(true);
+    }
+  }
 
   function feedAnimal() {
     setIsFed(true);
-    localStorage.setItem("animal-1-feed-time", new Date().toString()); // TODO: Same ID all the time now
+    localStorage.setItem(`animal-${id}-feed-time`, new Date().toString()); // TODO: Same ID all the time now
   }
 
   return (
@@ -78,17 +110,14 @@ export const AnimalDetails = () => {
                 <h3 className="desc">{animal?.longDescription}</h3>
                 <br />
                 <h3>{animal?.name} blev senast matad</h3>
-                <h4>{newTime}</h4>
+                <h4 onChange={handleChange}>{feedStamp}</h4>
                 <button
                   className="feedBtn"
-                  disabled={disabled}
+                  disabled={isFed}
                   onClick={handleClick}
                 >
                   Mata
                 </button>
-                {/* <button onClick={feedAnimal} disabled={isFed}>
-                  Mata
-                </button> */}
               </section>
             </div>
           </section>
