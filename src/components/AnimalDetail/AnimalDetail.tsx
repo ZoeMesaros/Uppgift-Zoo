@@ -54,7 +54,6 @@ export const AnimalDetails = () => {
   const [fedTime, setFedTime] = useState<Date | null>(null);
 
   useEffect(() => {
-    // Check on load of component, if animal is fed
     localStorage.getItem("fedStatus");
     const storedTime = localStorage.getItem(`animal-${id}-feed-time`);
     if (storedTime === null) {
@@ -70,10 +69,7 @@ export const AnimalDetails = () => {
   function checkIfNeedsFood(lastFed: string) {
     const lastFedDate = new Date(lastFed);
     const rightNow = new Date();
-    // TODO - Handle if day has changed too
-    // tip: https://bfy.tw/TsVk
     if (lastFedDate.getHours() + 3 < rightNow.getHours()) {
-      // Time to feed again
       setIsFed(false);
       setSymbol("🔴");
       setShowContent(true);
@@ -87,7 +83,7 @@ export const AnimalDetails = () => {
   function feedAnimal() {
     setIsFed(true);
     localStorage.setItem("fedStatus", symbol);
-    localStorage.setItem(`animal-${id}-feed-time`, new Date().toString()); // TODO: Same ID all the time now
+    localStorage.setItem(`animal-${id}-feed-time`, new Date().toString());
   }
 
   const [showContent, setShowContent] = useState(true);
