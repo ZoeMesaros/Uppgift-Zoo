@@ -32,6 +32,7 @@ export const AnimalDetails = () => {
 
   const handleClick = () => {
     setDisabled(true);
+    setFeedingTime();
     ToggleText();
   };
 
@@ -39,6 +40,21 @@ export const AnimalDetails = () => {
   const ToggleText = () => {
     setSymbol((state) => (state === "🟢" ? "🔴" : "🟢"));
   };
+
+  let newTime = new Date().toLocaleString();
+  const [feedStamp, setFeedStamp] = useState(newTime);
+  const setFeedingTime = () => {
+    let newTime = new Date().toLocaleString();
+    setTimeout(newTime);
+  };
+
+  const [isFed, setIsFed] = useState(false);
+
+  function feedAnimal() {
+    setIsFed(true);
+    localStorage.setItem("animal-1-feed-time", new Date().toString()); // TODO: Same ID all the time now
+  }
+
   return (
     <>
       {error !== "" ? (
@@ -62,7 +78,7 @@ export const AnimalDetails = () => {
                 <h3 className="desc">{animal?.longDescription}</h3>
                 <br />
                 <h3>{animal?.name} blev senast matad</h3>
-                <h4>{animal?.lastFed}</h4>
+                <h4>{newTime}</h4>
                 <button
                   className="feedBtn"
                   disabled={disabled}
@@ -70,6 +86,9 @@ export const AnimalDetails = () => {
                 >
                   Mata
                 </button>
+                {/* <button onClick={feedAnimal} disabled={isFed}>
+                  Mata
+                </button> */}
               </section>
             </div>
           </section>
