@@ -34,15 +34,12 @@ export const AnimalDetails = () => {
     setDisabled(true);
     setFeedingTime();
     feedAnimal();
-  };
-
-  const handleChange = () => {
     ToggleText();
   };
 
   const [symbol, setSymbol] = useState("🔴");
   const ToggleText = () => {
-    setSymbol((state) => (state === "🟢" ? "🔴" : "🟢"));
+    let newStatus = setSymbol((state) => (state === "🟢" ? "🔴" : "🟢"));
   };
 
   let newTime = new Date().toLocaleString();
@@ -57,6 +54,7 @@ export const AnimalDetails = () => {
 
   useEffect(() => {
     // Check on load of component, if animal is fed
+    localStorage.getItem("fedStatus");
     const storedTime = localStorage.getItem(`animal-${id}-feed-time`);
     if (storedTime === null) {
       if (animal) {
@@ -71,19 +69,21 @@ export const AnimalDetails = () => {
   function checkIfNeedsFood(lastFed: string) {
     const lastFedDate = new Date(lastFed);
     const rightNow = new Date();
-
     // TODO - Handle if day has changed too
     // tip: https://bfy.tw/TsVk
     if (lastFedDate.getHours() + 3 < rightNow.getHours()) {
       // Time to feed again
       setIsFed(false);
+      setSymbol("🔴");
     } else {
+      setSymbol("🟢");
       setIsFed(true);
     }
   }
 
   function feedAnimal() {
     setIsFed(true);
+    localStorage.setItem("fedStatus", symbol);
     localStorage.setItem(`animal-${id}-feed-time`, new Date().toString()); // TODO: Same ID all the time now
   }
 
@@ -110,7 +110,7 @@ export const AnimalDetails = () => {
                 <h3 className="desc">{animal?.longDescription}</h3>
                 <br />
                 <h3>{animal?.name} blev senast matad</h3>
-                <h4 onChange={handleChange}>{feedStamp}</h4>
+                <h4>{feedStamp}</h4>
                 <button
                   className="feedBtn"
                   disabled={isFed}

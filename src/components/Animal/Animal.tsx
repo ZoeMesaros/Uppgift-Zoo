@@ -22,13 +22,12 @@ export const Animal = (props: IAnimalProps) => {
           alt={props.animal.name}
         />
         <h3>{props.animal.name}</h3>
-        <p className="fed">
-          Senast matad <span>{props.animal.lastFed}</span>
-        </p>
         <p className="desc">
           <i>{props.animal.shortDescription}</i>
         </p>
-        <button className="showButton" onClick={showMoreClick}>Visa</button>
+        <button className="showButton" onClick={showMoreClick}>
+          Visa
+        </button>
       </div>
     </>
   );
