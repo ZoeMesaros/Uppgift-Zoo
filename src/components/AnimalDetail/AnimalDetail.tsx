@@ -35,6 +35,7 @@ export const AnimalDetails = () => {
     setFeedingTime();
     feedAnimal();
     ToggleText();
+    setShowContent(false);
   };
 
   const [symbol, setSymbol] = useState("🔴");
@@ -75,9 +76,11 @@ export const AnimalDetails = () => {
       // Time to feed again
       setIsFed(false);
       setSymbol("🔴");
+      setShowContent(true);
     } else {
       setSymbol("🟢");
       setIsFed(true);
+      setShowContent(false);
     }
   }
 
@@ -86,6 +89,8 @@ export const AnimalDetails = () => {
     localStorage.setItem("fedStatus", symbol);
     localStorage.setItem(`animal-${id}-feed-time`, new Date().toString()); // TODO: Same ID all the time now
   }
+
+  const [showContent, setShowContent] = useState(true);
 
   return (
     <>
@@ -109,8 +114,12 @@ export const AnimalDetails = () => {
                 <i>{animal?.latinName}</i>
                 <h3 className="desc">{animal?.longDescription}</h3>
                 <br />
-                <h3>{animal?.name} blev senast matad</h3>
-                <h4>{feedStamp}</h4>
+                <p
+                  className={`showContent ${showContent ? "hideContent" : ""}`}
+                >
+                  <h3>{animal?.name} blev senast matad</h3>
+                  <h4>{feedStamp}</h4>
+                </p>
                 <button
                   className="feedBtn"
                   disabled={isFed}
